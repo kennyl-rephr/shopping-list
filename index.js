@@ -30,6 +30,23 @@ $(function() {
     </li>`);
     // clear the input
     $('#shopping-list-entry').val("");
+  });
 
-  })
+  // toggle strikethrough state when user "checks" an item.
+  // using class .shopping-item__checked
+
+  const list = $(".shopping-list");
+  list.on('click', 'button', function(event) {
+    // find the closest upstream <li> element
+    let item = $(this).closest("li");
+    if (this.className === "shopping-item-toggle") {
+      // search the <li> element for class shopping-item
+      // toggle the class to get the strikethrough
+    item.find(".shopping-item").toggleClass('shopping-item__checked')
+    } else {
+      // delete the item
+      item.remove();
+    }
+  });
+
 });
